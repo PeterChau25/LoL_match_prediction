@@ -11,5 +11,10 @@ while True:
     main_url = url + urllib.parse.urlencode({'api_key': api_key})
 
     json_data = requests.get(main_url).json()
-    print(json_data)
+    accountID = json_data['accountId']
+    print(accountID)
 
+    match_url = 'https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/' + str(accountID) + '?api_key=RGAPI-91df046a-259a-48a9-a093-b4f14b5e763d'
+
+    match_data = requests.get(match_url).json()
+    print(match_data['timestamp'])
