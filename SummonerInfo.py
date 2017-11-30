@@ -1,7 +1,7 @@
 import requests
 import urllib.parse
 api_key = ''
-#https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/peteleetzor?api_key=RGAPI-91df046a-259a-48a9-a093-b4f14b5e763d
+#https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/peteleetzor?api_key=RGAPI-fcb7953a-74c7-4190-9a41-747445ccfd2b
 while True:
     summoners = input('Enter Summoner name ')
     api_key = input('Enter API key: ')
@@ -14,7 +14,8 @@ while True:
     accountID = json_data['accountId']
     print(accountID)
 
-    match_url = 'https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/' + str(accountID) + '?api_key=RGAPI-91df046a-259a-48a9-a093-b4f14b5e763d'
+    match_url = 'https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/' + str(accountID) + '?api_key=RGAPI-fcb7953a-74c7-4190-9a41-747445ccfd2b'
 
     match_data = requests.get(match_url).json()
-    print(match_data['timestamp'])
+    for i in range(0, 100):
+        print(match_data['matches'][i])
